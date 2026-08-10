@@ -1,0 +1,4146 @@
+=== NFS Most Wanted R36S consolidated gameplay test ===
+Thu Sep  4 10:35:37 PM IST 2025
+Linux darkosre-r36 4.4.189 #62 SMP Sat Dec 13 08:49:45 CST 2025 aarch64 GNU/Linux
+CFW_NAME=dArkOSRE
+DEVICE_ARCH=aarch64
+DEVICE_HAS_ARMHF=Y
+mapper=/roms/ports/nfsmw-maptest/nfsmw_mapper: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=9b74f1460757566193817b11d56bdb2f8fdc5d6d, with debug_info, not stripped
+GL: forcing the Mali blob from /usr/lib/arm-linux-gnueabihf/libmali-bifrost-g31-rxp0-gbm.so
+=== G2 MAP REGRESSION ===
+mapping[0]=/roms/ports/nfsmw-maptest/android-libs/libc++_shared.so
+module=/roms/ports/nfsmw-maptest/android-libs/libc++_shared.so soname=libc++_shared.so mapped=581632 bytes bias=0xf71c6000
+  needed=libc.so
+  needed=libdl.so
+  rel=3122 plt_rel=1087 relative_fastpath=1168
+mapping[1]=/roms/ports/nfsmw-maptest/android-libs/libfmodex.so
+module=/roms/ports/nfsmw-maptest/android-libs/libfmodex.so soname=libfmodex.so mapped=1097728 bytes bias=0xf6fec000
+  needed=libc.so
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=liblog.so
+  rel=1184 plt_rel=462 relative_fastpath=1178
+mapping[2]=/roms/ports/nfsmw-maptest/android-libs/libfmodevent.so
+module=/roms/ports/nfsmw-maptest/android-libs/libfmodevent.so soname=libfmodevent.so mapped=356352 bytes bias=0xf716f000
+  needed=libc.so
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=liblog.so
+  needed=libfmodex.so
+  rel=932 plt_rel=269 relative_fastpath=754
+mapping[3]=/roms/ports/nfsmw-maptest/android-libs/libNimble.so
+module=/roms/ports/nfsmw-maptest/android-libs/libNimble.so soname=libNimble.so mapped=20480 bytes bias=0xf7514000
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=libc.so
+  rel=8 plt_rel=30 relative_fastpath=3
+mapping[4]=/roms/ports/nfsmw-maptest/android-libs/libapp.so
+module=/roms/ports/nfsmw-maptest/android-libs/libapp.so soname=libapp.so mapped=11624448 bytes bias=0xf5a03000
+  needed=libc++_shared.so
+  needed=libfmodex.so
+  needed=libfmodevent.so
+  needed=libGLESv2.so
+  needed=libEGL.so
+  needed=liblog.so
+  needed=libjnigraphics.so
+  needed=libNimble.so
+  needed=libc.so
+  needed=libm.so
+  needed=libdl.so
+  rel=48533 plt_rel=515 relative_fastpath=45699
+G2 PASS: mapped 5 ARM32 modules without guest execution
+=== G3 PROVIDER CENSUS (NO GUEST EXECUTION) ===
+Target host libraries opened (8): libc.so.6 libm.so.6 libdl.so.2 libpthread.so.0 libEGL.so.1 libEGL.so libGLESv2.so.2 libGLESv2.so
+Provider census: imports=982 guest=254 softfp=61 compat=195 host-candidate=471 unbridged=0 missing=1 weak=0
+Unbridged Bionic/Android APIs (0 unique):
+No target provider found (1 unique):
+  __dso_handle
+G3-CENSUS PASS: target provider data captured; full relocation remains gated on ABI bridges
+=== G5/G6/G8 HOST PREFLIGHTS ===
+G5-HOST GLES vendor=ARM renderer=Mali-G31 version=OpenGL ES 3.2 v1.r13p0-01rel0.8747d14aec16ec21ac2b2da252c4ec5f drawable=640x480
+G5-HOST PASS SDL=KMSDRM GLES2 frames=3
+G6-HOST PASS controller=GO-Super Gamepad joysticks=1
+G8-HOST PASS driver=alsa format=44100Hz/2ch queued=4096 bytes
+HOST-PREFLIGHT PASS graphics=1 controller=1 audio=1
+=== G3 ARM REL RELOCATION PHASE A ===
+G3-REL libc++_shared.so total=4209 relative=1168 abs32=1767 glob=187 jump=1087 unresolved=0 first=none
+G3-REL libfmodex.so total=1646 relative=1178 abs32=4 glob=2 jump=462 unresolved=0 first=none
+G3-REL libfmodevent.so total=1201 relative=754 abs32=178 glob=0 jump=269 unresolved=0 first=none
+G3-REL libNimble.so total=38 relative=3 abs32=0 glob=5 jump=30 unresolved=0 first=none
+G3-REL libapp.so total=49048 relative=45699 abs32=2799 glob=35 jump=515 unresolved=0 first=none
+G3-REL providers guest=3043 softfp=59 host=454 alias=183 blocked=0 missing=0
+G3 FULL RELOCATION PASS processed=56142 unresolved=0; host providers retained
+G3-PATCH PASS FMOD event-state NULL guard helper=0x0050eea8 cave=0x00a8d9c0
+=== G4 BIONIC SIGNAL/JUMP SELFTEST ===
+G4-SIGNAL PASS: sigaction, sigprocmask and siglongjmp
+=== G4 DEPENDENCY-ORDERED CONSTRUCTORS ===
+G4-CTOR enter module=libc++_shared.so kind=DT_INIT_ARRAY index=0 address=0xf71fd019
+G4-CTOR leave module=libc++_shared.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=0 address=0xf701390c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=1 address=0xf7014fec
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=1
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=2 address=0xf7030e34
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=2
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=3 address=0xf7034108
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=3
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=4 address=0xf7035014
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=4
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=5 address=0xf70365a4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=5
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=6 address=0xf7037078
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=6
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=7 address=0xf703b78c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=7
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=8 address=0xf7042cfc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=8
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=9 address=0xf7046a3c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=9
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=10 address=0xf70493d4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=10
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=11 address=0xf7052910
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=11
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=12 address=0xf70535ac
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=12
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=13 address=0xf7054cb8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=13
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=14 address=0xf7055514
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=14
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=15 address=0xf70586d4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=15
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=16 address=0xf7059528
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=16
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=17 address=0xf70598d8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=17
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=18 address=0xf705c2bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=18
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=19 address=0xf705fe14
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=19
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=20 address=0xf7060c5c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=20
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=21 address=0xf7061c24
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=21
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=22 address=0xf70647d8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=22
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=23 address=0xf7065870
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=23
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=24 address=0xf7066108
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=24
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=25 address=0xf70686e8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=25
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=26 address=0xf7069bc0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=26
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=27 address=0xf706a330
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=27
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=28 address=0xf706adb8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=28
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=29 address=0xf706b8bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=29
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=30 address=0xf706d5ec
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=30
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=31 address=0xf706dff0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=31
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=32 address=0xf706eeb4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=32
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=33 address=0xf706f2bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=33
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=34 address=0xf706f830
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=34
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=35 address=0xf7072124
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=35
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=36 address=0xf707acfc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=36
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=37 address=0xf707d288
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=37
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=38 address=0xf7091878
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=38
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=39 address=0xf7091c6c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=39
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=40 address=0xf709307c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=40
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=41 address=0xf70938f0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=41
+G4-CTOR enter module=libfmodevent.so kind=DT_INIT_ARRAY index=0 address=0xf71ba740
+G4-CTOR leave module=libfmodevent.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=0 address=0xf5a77098
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=1 address=0xf5a76148
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=1
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=2 address=0xf5a6b44c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=2
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=3 address=0xf5a6b508
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=3
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=4 address=0xf5a6b5f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=4
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=5 address=0xf5a6b6d8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=5
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=6 address=0xf5a6b7c0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=6
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=7 address=0xf5a6b8a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=7
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=8 address=0xf5a6b968
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=8
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=9 address=0xf5a6bac8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=9
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=10 address=0xf5a6bb4c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=10
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=11 address=0xf5a6bbe0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=11
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=12 address=0xf5a6bbfc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=12
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=13 address=0xf5a6bcf0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=13
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=14 address=0xf5a6bd7c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=14
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=15 address=0xf5a6be18
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=15
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=16 address=0xf5a6bf00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=16
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=17 address=0xf5a6bf38
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=17
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=18 address=0xf5a6c020
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=18
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=19 address=0xf5a6c114
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=19
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=20 address=0xf5a6c4c8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=20
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=21 address=0xf5a6c5c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=21
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=22 address=0xf5a6c5fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=22
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=23 address=0xf5a6c7ac
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=23
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=24 address=0xf5a6c828
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=24
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=25 address=0xf5a6c88c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=25
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=26 address=0xf5a6c8a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=26
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=27 address=0xf5a6c9a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=27
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=28 address=0xf5a6c9c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=28
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=29 address=0xf5a6ca94
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=29
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=30 address=0xf5a6cab0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=30
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=31 address=0xf5a6cacc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=31
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=32 address=0xf5a6cb2c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=32
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=33 address=0xf5a6cc78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=33
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=34 address=0xf5a6cedc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=34
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=35 address=0xf5a6d140
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=35
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=36 address=0xf5a6d3a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=36
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=37 address=0xf5a6d658
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=37
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=38 address=0xf5a6dbbc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=38
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=39 address=0xf5a6dc48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=39
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=40 address=0xf5a6dc78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=40
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=41 address=0xf5a6dcdc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=41
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=42 address=0xf5a6dd68
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=42
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=43 address=0xf5a6dd84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=43
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=44 address=0xf5a6de10
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=44
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=45 address=0xf5a6de48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=45
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=46 address=0xf5a6ded4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=46
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=47 address=0xf5a6df60
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=47
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=48 address=0xf5a6e048
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=48
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=49 address=0xf5a6e0b8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=49
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=50 address=0xf5a6e134
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=50
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=51 address=0xf5a6e450
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=51
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=52 address=0xf5a6e91c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=52
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=53 address=0xf5a6ea1c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=53
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=54 address=0xf5a6ec18
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=54
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=55 address=0xf5a6ee34
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=55
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=56 address=0xf5a6efe4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=56
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=57 address=0xf5a6f148
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=57
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=58 address=0xf5a6f2e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=58
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=59 address=0xf5a6f488
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=59
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=60 address=0xf5a6f620
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=60
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=61 address=0xf5a6f7cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=61
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=62 address=0xf5a6f91c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=62
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=63 address=0xf5a6fa00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=63
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=64 address=0xf5a6fb00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=64
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=65 address=0xf5a70000
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=65
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=66 address=0xf5a70028
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=66
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=67 address=0xf5a7006c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=67
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=68 address=0xf5a70180
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=68
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=69 address=0xf5a70264
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=69
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=70 address=0xf5a702f4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=70
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=71 address=0xf5a703ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=71
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=72 address=0xf5a7059c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=72
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=73 address=0xf5a70684
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=73
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=74 address=0xf5a7072c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=74
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=75 address=0xf5a70764
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=75
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=76 address=0xf5a7084c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=76
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=77 address=0xf5a70944
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=77
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=78 address=0xf5a70bb4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=78
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=79 address=0xf5a70c14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=79
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=80 address=0xf5a70cfc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=80
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=81 address=0xf5a70e7c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=81
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=82 address=0xf5a70f78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=82
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=83 address=0xf5a70fb8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=83
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=84 address=0xf5a7111c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=84
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=85 address=0xf5a71154
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=85
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=86 address=0xf5a7124c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=86
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=87 address=0xf5a712f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=87
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=88 address=0xf5a71320
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=88
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=89 address=0xf5a713f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=89
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=90 address=0xf5a714c0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=90
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=91 address=0xf5a715f8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=91
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=92 address=0xf5a71664
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=92
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=93 address=0xf5a71764
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=93
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=94 address=0xf5a717b0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=94
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=95 address=0xf5a717e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=95
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=96 address=0xf5a71858
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=96
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=97 address=0xf5a719a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=97
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=98 address=0xf5a719ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=98
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=99 address=0xf5a71a14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=99
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=100 address=0xf5a71a3c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=100
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=101 address=0xf5a71a64
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=101
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=102 address=0xf5a71ad4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=102
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=103 address=0xf5a71afc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=103
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=104 address=0xf5a71f0c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=104
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=105 address=0xf5a71fc0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=105
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=106 address=0xf5a71fe8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=106
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=107 address=0xf5a72010
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=107
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=108 address=0xf5a7206c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=108
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=109 address=0xf5a720fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=109
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=110 address=0xf5a721e4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=110
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=111 address=0xf5a72270
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=111
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=112 address=0xf5a72298
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=112
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=113 address=0xf5a722f4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=113
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=114 address=0xf5a72364
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=114
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=115 address=0xf5a7238c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=115
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=116 address=0xf5a723b4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=116
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=117 address=0xf5a723dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=117
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=118 address=0xf5a72404
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=118
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=119 address=0xf5a724b0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=119
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=120 address=0xf5a727dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=120
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=121 address=0xf5a72900
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=121
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=122 address=0xf5a72928
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=122
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=123 address=0xf5a72950
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=123
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=124 address=0xf5a72978
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=124
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=125 address=0xf5a729d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=125
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=126 address=0xf5a729fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=126
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=127 address=0xf5a72a24
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=127
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=128 address=0xf5a72dd0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=128
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=129 address=0xf5a73054
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=129
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=130 address=0xf5a73154
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=130
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=131 address=0xf5a731e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=131
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=132 address=0xf5a733a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=132
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=133 address=0xf5a73550
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=133
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=134 address=0xf5a73578
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=134
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=135 address=0xf5a735d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=135
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=136 address=0xf5a735fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=136
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=137 address=0xf5a73890
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=137
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=138 address=0xf5a739cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=138
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=139 address=0xf5a73c48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=139
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=140 address=0xf5a73ec4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=140
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=141 address=0xf5a742e4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=141
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=142 address=0xf5a746ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=142
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=143 address=0xf5a74758
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=143
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=144 address=0xf5a747cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=144
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=145 address=0xf5a748c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=145
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=146 address=0xf5a749ac
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=146
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=147 address=0xf5a74aa4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=147
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=148 address=0xf5a74b8c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=148
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=149 address=0xf5a74ce0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=149
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=150 address=0xf5a74d14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=150
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=151 address=0xf5a74d44
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=151
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=152 address=0xf5a74d84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=152
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=153 address=0xf5a74e78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=153
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=154 address=0xf5a74f5c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=154
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=155 address=0xf5a75044
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=155
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=156 address=0xf5a7508c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=156
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=157 address=0xf5a75134
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=157
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=158 address=0xf5a7517c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=158
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=159 address=0xf5a751c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=159
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=160 address=0xf5a753a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=160
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=161 address=0xf5a754dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=161
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=162 address=0xf5a75540
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=162
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=163 address=0xf5a759b4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=163
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=164 address=0xf5a75a10
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=164
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=165 address=0xf5a75e84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=165
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=166 address=0xf5a75ef8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=166
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=167 address=0xf5a75f6c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=167
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=168 address=0xf5a75fe0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=168
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=169 address=0xf5a76060
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=169
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=170 address=0xf6030a70
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=170
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=171 address=0xf5a76264
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=171
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=172 address=0xf5a76268
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=172
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=173 address=0xf5a762ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=173
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=174 address=0xf5a763bc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=174
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=175 address=0xf5a767d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=175
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=176 address=0xf5a7680c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=176
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=177 address=0xf5a76a8c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=177
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=178 address=0xf5a76d0c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=178
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=179 address=0xf5a76dec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=179
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=180 address=0xf5a76e94
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=180
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=181 address=0xf5a76ed4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=181
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=182 address=0xf5a770fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=182
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=183 address=0xf5a77100
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=183
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=184 address=0xf5a77220
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=184
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=185 address=0xf5a7729c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=185
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=186 address=0xf5a7733c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=186
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=187 address=0xf5a77631
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=187
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=188 address=0xf5a777b1
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=188
+G4-CTOR PASS initializers=233
+G4-OBB PASS path=/roms/ports/nfsmw-maptest/main.1003128.com.ea.games.nfs13_row.obb entries=2411
+G5-RUNTIME PASS persistent GLES drawable=640x480
+G6-RUNTIME PASS controller=GO-Super Gamepad
+G6-RUNTIME raw-buttons=17 go-super-fallback=1
+G4-BITMAP create width=32 height=16 stride=128
+G4-BITMAP PASS RGBA=32x16 stride=128 fallback-font=1
+=== G4 libNimble JNI_OnLoad ===
+G4-JNI GetEnv version=0x00010006
+G4-JNI FindClass name=com/ea/nimble/bridge/BaseNativeCallback
+G4-JNI FindClass name=java/lang/Class
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI GetMethodID name=getClassLoader signature=()Ljava/lang/ClassLoader; id=0xaae30e38
+G4-JNI GetMethodID name=loadClass signature=(Ljava/lang/String;)Ljava/lang/Class; id=0xaae30f3c
+G4-JNI leave libNimble JNI_OnLoad version=0x00010006
+=== G4 libapp JNI_OnLoad ===
+G4-JNI GetEnv version=0x00010002
+G4-JNI leave libapp JNI_OnLoad version=0x00010002
+=== G4 nativeOnCreate ===
+G4-JNI GetMethodID name=forEach signature=(Ljava/lang/String;)[Ljava/lang/String; id=0xaae31040
+G4-JNI GetMethodID name=getAssetSize signature=(Ljava/lang/String;)I id=0xaae31144
+G4-JNI GetMethodID name=getObbFullPath signature=()Ljava/lang/String; id=0xaae31248
+G4-JNI GetStaticMethodID name=isAnyMusicPlaying signature=()Z id=0xaae3134c
+G4-JNI GetMethodID name=useAssetsFileSystem signature=()Z id=0xaae31450
+G4-JNI GetMethodID name=isObbAssets signature=()Z id=0xaae31554
+G4-JNI GetMethodID name=isFullApkAssets signature=()Z id=0xaae31658
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=java/io/File
+G4-JNI GetMethodID name=getAbsolutePath signature=()Ljava/lang/String; id=0xaae3175c
+G4-JNI FindClass name=android/os/Environment
+G4-JNI GetStaticMethodID name=getExternalStorageDirectory signature=()Ljava/io/File; id=0xaae31860
+G4-JNI GetMethodID name=getFilesDir signature=()Ljava/io/File; id=0xaae31964
+G4-JNI GetMethodID name=getPackageName signature=()Ljava/lang/String; id=0xaae31a68
+G4-JNI GetMethodID name=getPerformanceScore signature=()F id=0xaae31b6c
+G9-PERFORMANCE requested-score=20
+G4-JNI GetMethodID name=getTotalMemory signature=()I id=0xaae31c70
+G4-JNI FindClass name=android/util/DisplayMetrics
+G4-JNI GetMethodID name=getDisplayMetrics signature=()Landroid/util/DisplayMetrics; id=0xaae31d74
+G4-JNI GetFieldID name=density signature=F
+G4-JNI GetFieldID name=densityDpi signature=I
+G4-JNI GetFieldID name=widthPixels signature=I
+G4-JNI GetFieldID name=heightPixels signature=I
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetDeviceName signature=()Ljava/lang/String; id=0xaae31e78
+G4-JNI GetStaticMethodID name=GetDeviceLocale signature=()Ljava/lang/String; id=0xaae31f7c
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetDefaultLanguage signature=()Ljava/lang/String; id=0xaae32080
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetApplicationVersion signature=()Ljava/lang/String; id=0xaae32184
+G4-JNI GetStaticMethodID name=getOsVersion signature=()Ljava/lang/String; id=0xaae32288
+android[4] info: InternalStorageDirectory = ./files
+
+android[4] info: ExternalStorageDirectory = ./Android/data/com.ea.games.nfs13_row
+
+android[4] info: DeviceName = R36S
+
+android[4] info: DefaultLanguage = en
+
+android[4] info: ApplicationVersion = 1.3.128
+
+android[4] info: ScreenDensity = 1
+
+android[4] info: ScreenDensityDPI = 160
+
+android[4] info: ScreenWidthPixels = 640
+
+android[4] info: ScreenHeightPixels = 480
+
+android[4] info: ContentScale (derived) = 1
+
+android[4] info: PerformanceScore = 20
+
+android[4] info: TotalMemoryMb = 768
+
+android[4] info: OsVersion = 4.4.4
+
+android[4] info: Tier = Higest
+
+G4-JNI GetStaticMethodID name=isAmazon signature=()Z id=0xaae3238c
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getRunLoop signature=()Lcom/ea/ironmonkey/RunLoop; id=0xaae32490
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=start signature=()V id=0xaae32594
+android[4] info: Tier = Higest
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5c67ef4
+G4-JNI GetStaticMethodID name=getInstance signature=(Landroid/content/Context;)Lcom/bda/controller/Controller; id=0xaae32698
+G4-JNI GetMethodID name=init signature=()Z id=0xaae3279c
+G4-JNI GetMethodID name=exit signature=()V id=0xaae328a0
+G4-JNI GetMethodID name=getAxisValue signature=(I)F id=0xaae329a4
+G4-JNI GetMethodID name=getInfo signature=(I)I id=0xaae32aa8
+G4-JNI GetMethodID name=getKeyCode signature=(I)I id=0xaae32bac
+G4-JNI GetMethodID name=getState signature=(I)I id=0xaae32cb0
+G4-JNI GetMethodID name=onPause signature=()V id=0xaae32db4
+G4-JNI GetMethodID name=onResume signature=()V id=0xaae32eb8
+G4-JNI GetMethodID name=setListener signature=(Lcom/bda/controller/ControllerListener;Landroid/os/Handler;)V id=0xaae32fbc
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5c68ccc
+G4-JNI GetMethodID name=getAction signature=()I id=0xaae330c0
+G4-JNI GetMethodID name=getControllerId signature=()I id=0xaae331c4
+G4-JNI GetMethodID name=getEventTime signature=()J id=0xaae332c8
+G4-JNI GetMethodID name=getKeyCode signature=()I id=0xaae333cc
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5c6a784
+G4-JNI GetMethodID name=findPointerIndex signature=(I)I id=0xaae334d0
+G4-JNI GetMethodID name=getAxisValue signature=(II)F id=0xaae335d4
+G4-JNI GetMethodID name=getPointerCount signature=()I id=0xaae336d8
+G4-JNI GetMethodID name=getPointerId signature=(I)I id=0xaae337dc
+G4-JNI GetMethodID name=getRawX signature=()F id=0xaae338e0
+G4-JNI GetMethodID name=getRawY signature=()F id=0xaae339e4
+G4-JNI GetMethodID name=getX signature=()F id=0xaae33ae8
+G4-JNI GetMethodID name=getX signature=(I)F id=0xaae33bec
+G4-JNI GetMethodID name=getXPrecision signature=()F id=0xaae33cf0
+G4-JNI GetMethodID name=getY signature=()F id=0xaae33df4
+G4-JNI GetMethodID name=getY signature=(I)F id=0xaae33ef8
+G4-JNI GetMethodID name=getYPrecision signature=()F id=0xaae33ffc
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5c6ae10
+G4-JNI GetMethodID name=getState signature=()I id=0xaae34100
+G4-JNI GetFieldID name=mIsBound signature=Z
+G4-JNI FindClass name=android/content/Intent
+G4-JNI GetMethodID name=<init> signature=(Ljava/lang/String;)V id=0xaae34204
+G4-JNI GetMethodID name=setPackage signature=(Ljava/lang/String;)Landroid/content/Intent; id=0xaae34308
+G4-JNI GetFieldID name=mContext signature=Landroid/content/Context;
+G4-JNI GetFieldID name=mServiceConnection signature=Lcom/bda/controller/Controller$ServiceConnection;
+G4-JNI FindClass name=android/content/Context
+G4-JNI GetMethodID name=startService signature=(Landroid/content/Intent;)Landroid/content/ComponentName; id=0xaae3440c
+G4-JNI GetMethodID name=bindService signature=(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z id=0xaae34510
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5c69f1c
+G4-JNI GetMethodID name=<init> signature=()V id=0xaae34614
+G4-JNI PASS JNI_OnLoad/nativeOnCreate methods=56
+G8-AUDIO output-enabled=1
+G8-AUDIOTRACK native Java mixer replacement enabled
+=== G5 GAME SURFACE ===
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=android/view/ViewRoot
+G4-JNI GetMethodID name=setProcessPositionEvents signature=(Z)V id=0xaae34718
+G4-JNI GetMethodID name=GetViewRoot signature=()Landroid/view/ViewParent; id=0xaae3481c
+android[4] ResourceManager: ContextLost() 
+
+android[4] ResourceManager: mIAssetV.empty()? 1 mTextureV.empty()? 1
+
+G5-SURFACE PASS lifecycle returned
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnStateEvent
+
+android[2] trace: (KK) MogaController :: Inside nativeOnStateEvent ....................
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnStateEvent
+
+android[2] trace: (KK) MogaController :: Inside nativeOnStateEvent ....................
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnStateEvent
+
+android[2] trace: (KK) MogaController :: Inside nativeOnStateEvent ....................
+
+G6-MOGA connected product=MOGA-Pro
+=== G6/G7 GAME LOOP (Back+Start exits) ===
+G6-MOGA steering=direct-guest-state deadzone=4096 jni-payload=-1/0/+1
+G6-TOUCH fallback-toggle=Select
+G6-MOGA D-pad=native-key-only analog=independent-X/Y
+G6-UIMODE pointer-mode=forced-gamepad guest-field=ui_state+0x239
+android[2] trace: ....................(KK) MogaController :: Inside NativeOnMotionEvent
+
+android[2] trace: (KK) MogaController :: Inside NativeOnMotionEvent ....................
+
+G6-MOGA motion frame=0 axes=0,0,0,0,0,0
+G6-UIMODE frame=0 value=0
+G7-FRAME enter=0
+android[4] info: OpenGL-ES extensions: GL_ARM_rgba8 GL_ARM_mali_shader_binary GL_OES_depth24 GL_OES_depth_texture GL_OES_depth_texture_cube_map
+android[4] info:  GL_OES_packed_depth_stencil GL_OES_rgb8_rgba8 GL_EXT_read_format_bgra GL_OES_compressed_paletted_texture GL_OES_compressed_ET
+android[4] info: C1_RGB8_texture GL_OES_standard_derivatives GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_
+android[4] info: EGL_sync GL_OES_texture_npot GL_OES_vertex_half_float GL_OES_required_internalformat GL_OES_vertex_array_object GL_OES_mapbuff
+android[4] info: er GL_EXT_texture_format_BGRA8888 GL_EXT_texture_rg GL_EXT_texture_type_2_10_10_10_REV GL_OES_fbo_render_mipmap GL_OES_element
+android[4] info: _index_uint GL_EXT_shadow_samplers GL_OES_texture_compression_astc GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compress
+android[4] info: ion_astc_hdr GL_KHR_texture_compression_astc_sliced_3d GL_EXT_texture_compression_astc_decode_mode GL_EXT_texture_compression_
+android[4] info: astc_decode_mode_rgb9e5 GL_KHR_debug GL_EXT_occlusion_query_boolean GL_EXT_disjoint_timer_query GL_EXT_blend_minmax GL_EXT_dis
+android[4] info: card_framebuffer GL_OES_get_program_binary GL_OES_texture_3D GL_EXT_texture_storage GL_EXT_multisampled_render_to_texture GL_O
+android[4] info: ES_surfaceless_context GL_OES_texture_stencil8 GL_EXT_shader_pixel_local_storage GL_ARM_shader_framebuffer_fetch GL_ARM_shader
+android[4] info: _framebuffer_fetch_depth_stencil GL_ARM_mali_program_binary GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_texture_sRGB_decode G
+android[4] info: L_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_OES_te
+android[4] info: xture_storage_multisample_2d_array GL_OES_shader_image_atomic GL_EXT_robustness GL_EXT_draw_buffers_indexed GL_OES_draw_buffer
+android[4] info: s_indexed GL_EXT_texture_border_clamp GL_OES_texture_border_clamp GL_EXT_texture_cube_map_array GL_OES_texture_cube_map_array 
+android[4] info: GL_OES_sample_variables GL_OES_sample_shading GL_OES_shader_multisample_interpolation GL_EXT_shader_io_blocks GL_OES_shader_io
+android[4] info: _blocks GL_EXT_tessellation_shader GL_OES_tessellation_shader GL_EXT_primitive_bounding_box GL_OES_primitive_bounding_box GL_E
+android[4] info: XT_geometry_shader GL_OES_geometry_shader GL_ANDROID_extension_pack_es31a GL_EXT_gpu_shader5 GL_OES_gpu_shader5 GL_EXT_texture
+android[4] info: _buffer GL_OES_texture_buffer GL_EXT_copy_image GL_OES_copy_image GL_EXT_shader_non_constant_global_initializers GL_EXT_color_
+android[4] info: buffer_half_float GL_EXT_color_buffer_float GL_EXT_YUV_target GL_OVR_multiview GL_OVR_multiview2 GL_OVR_multiview_multisampled
+android[4] info: _render_to_texture GL_KHR_robustness GL_KHR_robust_buffer_access_behavior GL_EXT_draw_elements_base_vertex GL_OES_draw_element
+android[4] info: s_base_vertex GL_EXT_buffer_storage 
+
+android[4] info: Renderer: Mali-G31
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getGameGLSurfaceView signature=()Lcom/ea/ironmonkey/GameGLSurfaceView; id=0xaae34920
+G4-JNI GetMethodID name=getWidth signature=()I id=0xaae34a24
+G4-JNI GetMethodID name=getHeight signature=()I id=0xaae34b28
+android[5] warn: OpenGL Renderer: Mali-G31
+
+android[5] warn: Isis Renderer Capabilities:
+
+android[5] warn: 	Max Texture Size:      8192
+
+android[5] warn: 	FB Max Samples:        0
+
+android[5] warn: 	EXT: FB Discard:       1
+
+android[5] warn: 	EXT: Occlusion Queries 0
+
+android[5] warn: 	EXT: Texture Max Level 0
+
+android[5] warn: 	EXT: Framebuffer Fetch 0
+
+android[5] warn: 	EXT: Depth Texture     1
+
+android[5] warn: 	EXT: VAO               1
+
+android[4] info: Tier = Higest
+
+android[2] trace: PERFORMANCE - level = 4
+
+android[5] warn: Primary view size: 640  480
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getAccelerometer signature=()Lcom/ea/ironmonkey/Accelerometer; id=0xaae34c2c
+G4-JNI GetMethodID name=setFrequency signature=(F)V id=0xaae34d30
+G4-JNI GetMethodID name=setBufferSize signature=(I)V id=0xaae34e34
+G4-JNI GetMethodID name=getSamples signature=(I[I[F)I id=0xaae34f38
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI GetStaticMethodID name=createPaintFromFamilyName signature=(Ljava/lang/String;F)Landroid/graphics/Paint; id=0xaae3503c
+G4-JNI GetMethodID name=getTextSize signature=()F id=0xaae35140
+G4-JNI GetMethodID name=setTextSize signature=(F)V id=0xaae35244
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetMethodID name=getFontMetricsInt signature=()Landroid/graphics/Paint$FontMetricsInt; id=0xaae35348
+G4-JNI GetFieldID name=ascent signature=I
+G4-JNI GetFieldID name=descent signature=I
+G4-JNI GetFieldID name=bottom signature=I
+G4-JNI GetFieldID name=top signature=I
+G4-JNI GetFieldID name=leading signature=I
+G4-JNI GetMethodID name=measureText signature=(Ljava/lang/String;)F id=0xaae3544c
+android[4] EAStdC.Printf: [NimbleWrapper] ICoreAllocator::GetDefaultAllocator() is 0xf64ddb1c
+android[4] EAStdC.Printf: [NimbleWrapper] alloc free check
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::NimbleWrapper()
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::Init(), allocator=f64ddb1c
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::FinishInitialization()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20::OpenGLES20()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20Ext::OpenGLES20Ext()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20Ext::LoadExtensions()...
+android[4] EAStdC.Printf: [Graphics] ...OpenGLES20Ext::LoadExtensions()
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::InitNimble()
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetMethodID name=<init> signature=(I)V id=0xaae35550
+G4-JNI GetStaticMethodID name=registerReceiver signature=(Ljava/lang/String;Landroid/content/BroadcastReceiver;)V id=0xaae35654
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+android[4] EAStdC.Printf: [nimble] telemetry enabled=yes
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetStaticMethodID name=getComponent signature=()Lcom/ea/nimble/tracking/ITracking; id=0xaae35758
+G4-JNI GetMethodID name=setEnable signature=(Z)V id=0xaae3585c
+android[4] EAStdC.Printf: [nimble] im::nimble::SaveTelemetryEnabledState(), val=yes
+DEBUG: sendTrackingMessage!
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetMethodID name=getEnable signature=()Z id=0xaae35960
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[2] trace: AddSKU: texture_etc
+
+android[2] trace: Aspect=1333
+
+android[2] trace: AddSKU: 1x
+
+android[2] trace: AddSKU: 2x
+
+G4-JNI GetEnv version=0x00010002
+android[2] trace: Mounting SKU: texture_etc to /published
+
+android[2] trace: Mounting SKU: 1x to /published
+
+android[2] trace: Mounting SKU: 2x to /published
+
+android[2] trace: Locale: Language id=en locale id=en
+
+android[2] trace: Locale: Language id=fr locale id=fr
+
+android[2] trace: Locale: Language id=de locale id=de
+
+android[2] trace: Locale: Language id=it locale id=it
+
+android[2] trace: Locale: Language id=ja locale id=ja
+
+android[2] trace: Locale: Language id=es locale id=es
+
+android[2] trace: Locale: Language id=zh-Hans locale id=cn
+
+android[2] trace: Locale: Language id=zh locale id=cn
+
+android[2] trace: Locale: Language id=ko locale id=kr
+
+android[2] trace: Locale: Language id=nl locale id=nl
+
+android[2] trace: Locale: Language id=pt locale id=pt
+
+android[2] trace: Locale: Language id=ru locale id=ru
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::SetLanguage()
+android[4] EAStdC.Printf: [NimbleWrapper] SLG3
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI GetStaticMethodID name=createPaintFromFile signature=(Ljava/lang/String;F)Landroid/graphics/Paint; id=0xaae35a64
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI UNKNOWN table call guest-return=0xf5f449a8
+G4-JNI GetEnv version=0x00010002
+android[2] trace: FlowManager splash.sba sba
+
+android[2] trace: FlowManager splash_1333.sba sba
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: splash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_screen_continue
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: rollout_vingette
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: bars_dividers/rollout_vingette.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/speed_line_2.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/speed_line.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/triangles.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/fm_logo_blur.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/fm_logo.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/nfs_blur_shapes.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/car.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: images/messaging_white_flare.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/most_wanted_logo.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/ea_logo_blur.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/ea_logo.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: icons/spinner_circle_mw.tif
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: splash/car_splash_iphone.tif
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[6] layouts/error: Unable to locate layout entity: tip_area
+
+android[5] warn: Lock: Is being locked. Lock count: 1
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/splash_1333.sba_0
+
+G4-JNI GetEnv version=0x00010002
+android[2] trace: Kindle sound low latency fix
+
+android[4] Sound/SoundManager/info: Sample Rate: 24000, Format: 2, Output Channels: 2, Max Input Channels: 2, Resample Method: 1
+
+G4-JNI GetEnv version=0x00010002
+G8-SILENT user-music-override=1
+android[4] info: Platform::isAnyMusicPlaying = true
+
+android[4] Sound/SoundManager/info: SoundManager::SuspendMusic
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getNotchesBoundingRects signature=()[[I id=0xaae35b68
+G4-JNI GetEnv version=0x00010002
+android[2] trace: NFSSoundSubSystem::LoadUISounds() - memory used = 0 MB
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI GetMethodID name=<init> signature=(II)V id=0xaae35c6c
+G4-BITMAP create width=512 height=512 stride=2048
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=clear signature=()V id=0xaae35d70
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=drawString signature=(Landroid/graphics/Paint;Ljava/lang/String;II)V id=0xaae35e74
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getBitmap signature=()Landroid/graphics/Bitmap; id=0xaae35f78
+G8-OPENSL PASS SDL output=24000Hz/2ch
+G8-AUDIOTRACK PASS rate=24000Hz dsp-frames=1024 buffers=5 pcm-bytes=4096
+G8-AUDIOTRACK mixer-running=1 frame=0
+G5-GL STATE frame=0 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=0
+G7-FRAME enter=1
+G5-GL STATE frame=1 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=1
+G7-FRAME enter=2
+G5-GL STATE frame=2 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=2
+G7-FRAME enter=3
+G5-GL STATE frame=3 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=3
+G7-FRAME enter=4
+G5-GL STATE frame=4 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=4
+G7-FRAME enter=5
+G5-GL STATE frame=5 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=5
+G7-FRAME enter=6
+G5-GL STATE frame=6 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=6
+G7-FRAME enter=7
+G5-GL STATE frame=7 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=7
+G7-FRAME enter=8
+G5-GL STATE frame=8 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=8
+G7-FRAME enter=9
+G5-GL STATE frame=9 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=9
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/splash_firemonkeys': failure.
+
+android[2] trace: UI play sound: ui/ui/splash_firemonkeys
+
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetStaticMethodID name=getComponent signature=()Lcom/ea/nimble/INetwork; id=0xaae3607c
+G4-JNI GetMethodID name=getStatus signature=()Lcom/ea/nimble/Network$Status; id=0xaae36180
+G4-JNI GetMethodID name=ordinal signature=()I id=0xaae36284
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=CallGC signature=()V id=0xaae36388
+android[5] flow/FlowNode/warn: Validate node  `/menus/demo_billing_prompt': Screen `Billing' not registered
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/options/main': Node `/menus/demo_billing_prompt' for output `PURCHASE' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/store/store': Node `/menus/options/main' for output `OPTIONS' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/profile/profile': Node `/menus/store/store' for output `STORE' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/garage/garage_grid': Node `/menus/profile/profile' for output `PROFILE' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/profile/profile_comparison': Node `/menus/garage/garage_grid' for output `GARAGE' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/menus/map_overworld': Node `/menus/profile/profile_comparison' for output `MOSTWANTEDCOMPARISON' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/tutorial_check': Node `/menus/map_overworld' for output `MAP' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `/update_check': Node `/tutorial_check' for output `SKIP' not valid
+
+android[5] flow/FlowNode/warn: Validate node  `default': Node `/update_check' for output `DEFAULT' not valid
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/mwl_ai_avatars.sba_0
+
+android[2] trace: MusicManager::SetPlaylist(): playlist=Loading fade=true
+
+android[2] trace: MusicManager::PlayNextTrack() try, fade=true, soundManager.IsInitialized()=true, soundManager.IsUserMusicPlaying()=true
+
+android[2] trace: MusicManager::PlayNextTrack(): break, fade=true, soundManager.IsInitialized()=true, soundManager.IsUserMusicPlaying()=true
+
+android[2] trace: Tutorial: m_DrivingTutorialProgress=8/8
+
+android[2] trace: Tutorial: m_FrontEndTutorialProgress=4/5
+
+android[2] trace: Tutorial: Achiv=1
+
+DEBUG: sendTrackingMessage!
+G4-JNI GetEnv version=0x00010006
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. You(52500 PTS)
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+DEBUG: sendTrackingMessage!
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010002
+G7-FRAME enter=300
+G5-GL STATE frame=300 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=300
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/map.sba_0
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/map.sba_1
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/menu.sba_0
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/menu.sba_1
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/menu.sba_2
+
+android[4] ResourceManager: Add texture: /published/texturepacks_ui/masks.sba_0
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_brakelight_additive.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_headlight_additive.sba
+
+android[4] ResourceManager: Add asset: /published/textures/environments/garage/texture_concrete_floor_1024_alt.sba
+
+android[4] ResourceManager: Add asset: /published/textures/environments/garage/texture_garage_skydome.sba
+
+android[4] ResourceManager: Add asset: /published/textures/environments/garage/texture_concrete_floor_1024.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cutscenerig/garage.m3g
+
+android[5] serialization_old/warn: Field "useOffset" not found!
+
+android[4] ResourceManager: Add asset: /published/textures/environments/garage/texture_hemispheremap.sba
+
+android[4] ResourceManager: Add asset: /published/textures/environments/garage/texture_hemispheremap_vinyl.sba
+
+android[5] layouts/warning: SetAnimation: Animation load_complete not found in node /[NoID]/[NoID]
+
+G4-JNI GetEnv version=0x00010006
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G7-FRAME enter=600
+G5-GL STATE frame=600 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=600
+G4-JNI GetEnv version=0x00010006
+android[5] layouts/warning: LayoutEntity not in cache, reloading: tutorial_check
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+android[5] warn: Unlock: Is being unlocked. Lock count: 0
+
+android[4] ResourceManager: Remove texture: /published/texturepacks_ui/splash_1333.sba_0
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: map_overworld
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: satmap
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: track_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_track
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_normal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: completion_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_glow
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: blacklist_icon
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_mw_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: map_offscreen_marker
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_glow
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_blackmarket
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: completion_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: blacklist_clock
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_list_bg
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_list_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: events_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_horizontal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb_horizontal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_easydrive
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_easydriveMoga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: origin_logged_out
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: offline_online_indicator
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: friend_notifications
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_back_corner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: mwlist_arrow_flash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_block_input
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_maximise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_minimise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: swipe_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_leaderboard
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_scroll_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_red
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_nag
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: login_reward
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_milestone_popup_sp_value
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android_no_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[5] layouts/warning: TexturePack image not found for layout Sprite: hud/vingette.tif
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[6] layouts/error: Unable to locate layout entity: EventName
+
+android[6] layouts/error: Unable to locate layout entity: class_restriction
+
+android[6] layouts/error: Unable to locate layout entity: event_type
+
+android[6] layouts/error: Unable to locate layout entity: event_rank_corner_large
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=needInstallWallpaper signature=()Z id=0xaae3648c
+android[2] trace: MusicManager::SetPlaylist(): playlist=FrontEnd fade=true
+
+android[2] trace: MusicManager::PlayNextTrack() try, fade=true, soundManager.IsInitialized()=true, soundManager.IsUserMusicPlaying()=true
+
+android[2] trace: MusicManager::PlayNextTrack(): break, fade=true, soundManager.IsInitialized()=true, soundManager.IsUserMusicPlaying()=true
+
+android[2] trace: [AUTOLOG QUERY] Server: Blaze     Call: /nfs-2013-android/util/ping
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_block_input
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_minimise_btn
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_continue': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_continue
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G7-FRAME enter=900
+G5-GL STATE frame=900 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=900
+G4-JNI GetEnv version=0x00010006
+G6-DIRECT stick frame=1162 raw=-20389,0 value=-0.5683,0.0000 x_bits=0xbf117a71
+G6-RAW buttons=0x00000002
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1200 code=96 state=down
+G7-FRAME enter=1200
+G5-GL STATE frame=1200 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=1200
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_continue': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_continue
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1202 code=96 state=up
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_entry_class_type
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_rank_corner_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_hotride_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_rank_corner_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_hotride_entry_logos
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_event_select': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_event_select
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: options_scroll_bg
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_detailed
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_achievements_compacted
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_achievements_title
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: progress_bar_holder
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_progress
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_profile_toggle1
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_options_large_active
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_options_large_idle
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: maxmin_arrow_flash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_achievements_other_platform
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_profile_notoggle
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_options_large_active
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_options_large_idle
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_detailed_info
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: cash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: cash_container
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: origin_logged_out
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: offline_online_indicator
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: friend_notifications
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: mwlist_arrow_flash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_block_input
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_maximise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_minimise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: swipe_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_leaderboard
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_scroll_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_red
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_nag
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: login_reward
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_milestone_popup_sp_value
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android_no_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_achievements_body
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[6] layouts/error: Unable to locate layout entity: _icon
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_block_input
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_minimise_btn
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010006
+android[2] trace: [AUTOLOG QUERY] Server: Blaze     Call: /nfs-2013-android/util/ping
+
+G7-FRAME enter=1500
+G5-GL STATE frame=1500 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=1500
+G4-JNI GetEnv version=0x00010006
+G6-RAW buttons=0x00000010
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 102
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key L1 1111 .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press L1 .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1553 code=102 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 102
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key L1 1111 .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press L1 .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1566 code=102 state=up
+G6-RAW buttons=0x00000010
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 102
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key L1 1111 .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press L1 .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1599 code=102 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 102
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key L1 1111 .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press L1 .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1610 code=102 state=up
+G6-RAW buttons=0x00000002
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1649 code=96 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1657 code=96 state=up
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_continue': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_continue
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: map_overworld
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: satmap
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: track_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_track
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_normal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: completion_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_glow
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: blacklist_icon
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_mw_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: map_offscreen_marker
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_holder_panel_glow
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_blackmarket
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: completion_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: blacklist_clock
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_list_bg
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_list_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: events_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_horizontal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb_horizontal
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_easydrive
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_easydriveMoga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: origin_logged_out
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: offline_online_indicator
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: friend_notifications
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_back_corner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: mwlist_arrow_flash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_block_input
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_maximise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_panel_minimise
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: swipe_widget
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_leaderboard
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_scroll_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: most_wanted_red
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_nag
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: login_reward
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_milestone_popup_sp_value
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_android_no_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: navigation_panel_shading
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_purchase
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: quickbar_bg_text
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_lowernav_notification
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[4] info: -- Most Wanted List Updated --
+
+android[4] info: 1. MSTWNTD(118750 PTS)
+
+android[4] info: 2. FANGD(112500 PTS)
+
+android[4] info: 3. GDZLLR(106250 PTS)
+
+android[4] info: 4. HONEY(100000 PTS)
+
+android[4] info: 5. KRIEG(93750 PTS)
+
+android[4] info: 6. GU1LTY(87500 PTS)
+
+android[4] info: 7. SPIDER(81250 PTS)
+
+android[4] info: 8. GTMC(75000 PTS)
+
+android[4] info: 9. SNWBLND(68750 PTS)
+
+android[4] info: 10. You(52500 PTS)
+
+android[4] info: 11. JAPAN4(48300 PTS)
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[6] layouts/error: Unable to locate layout entity: EventName
+
+android[6] layouts/error: Unable to locate layout entity: class_restriction
+
+android[6] layouts/error: Unable to locate layout entity: event_type
+
+android[6] layouts/error: Unable to locate layout entity: event_rank_corner_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_entry_class_type
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_rank_corner_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_hotride_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_rank_corner_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_events_text_looper
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_hotride_entry_logos
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: hotride_logos
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+android[6] layouts/error: Unable to locate layout entity: class
+
+android[6] layouts/error: Unable to locate layout entity: blacklist_plates
+
+android[6] layouts/error: Unable to locate layout entity: number
+
+G4-JNI GetEnv version=0x00010002
+android[2] trace: MusicManager::SetPlaylist(): playlist=FrontEnd fade=true
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_block_input
+
+android[5] layouts/warning: SetAnimation: Animation _disabled not found in node /[NoID]/most_wanted_panel/_minimise_btn
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_continue': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_continue
+
+G6-DIRECT stick frame=1700 raw=11359,0 value=0.2533,0.0000 x_bits=0x3e81b372
+G6-RAW buttons=0x00000002
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1737 code=96 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1747 code=96 state=up
+android[2] trace: EVENT ID event_07_race
+
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_generic_accept': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_generic_accept
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_back_corner2
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: results_speedwall_personalbest
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: speedwall_footer
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: speedwall_header
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: medal_targets_event_details
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: origin_logged_out
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: offline_online_indicator
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: friend_notifications
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: masked_line_most_wanted_goals
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_car_action_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: lower_white_bar
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[6] layouts/error: Unable to locate layout entity: _name_header
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[2] trace: A.N. produce offset for race selection screen
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/event_menu_in': failure.
+
+android[2] trace: UI play sound: ui/ui/event_menu_in
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010006
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/swipe_info': failure.
+
+android[2] trace: UI play sound: ui/ui/swipe_info
+
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/swipe_info': failure.
+
+android[2] trace: UI play sound: ui/ui/swipe_info
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+G7-FRAME enter=1800
+G5-GL STATE frame=1800 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=1800
+G6-RAW buttons=0x00000002
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1819 code=96 state=down
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_accept': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_accept
+
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1822 code=96 state=up
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_select_new
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: rollout_vingette
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_select_locked
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_arrow_car_select
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_car_action_small
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_uppernav
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_garage
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: cash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: cash_container
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_add_cash
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_class_dropdown
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: class_frame_dropdown
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_paint
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_car_action_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_car_action_buy_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_select_instance
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_select_nfs_edition
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_selector_main_element
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: car_select_stats_bar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: class_bg_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_moga_highlight
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: class_menu
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_class
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[6] layouts/error: Unable to locate layout entity: _icon
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[6] layouts/error: Attempted to access invalid layout: car_select_bg
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[5] warn: WARNING: loading model directly: /published/models/cars/dodge_challenger_srt8_392_2011/dodge_challenger_srt8_392_2011.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_00.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_light_falloff.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_damage.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_01.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_reflection_s
+android[4] ResourceManager: peedstripe.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_brdf_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_00.sba
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+G6-RAW buttons=0x00000800
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 22
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Right TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Right .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1913 code=22 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 22
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Right TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Right .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1920 code=22 state=up
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/swipe_change': failure.
+
+android[2] trace: UI play sound: ui/ui/swipe_change
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_light_falloff.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_damage.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_reflection.
+android[4] ResourceManager: sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_brdf_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_reflectio
+android[4] ResourceManager: n_speedstripe.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_01.sba
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[5] warn: WARNING: loading model directly: /published/models/cars/bmw_m3_e92_2009/bmw_m3_e92_2009.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_diffuse_00.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_light_falloff.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha_damage.sba
+
+G6-RAW buttons=0x00000400
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 21
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Left TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Left .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1951 code=21 state=down
+android[4] ResourceManager: Add asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_diffuse_reflection_gloss.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_brdf_gloss_light.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_gloss.sba
+
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 21
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Left TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Left .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=1956 code=21 state=up
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/swipe_change': failure.
+
+android[2] trace: UI play sound: ui/ui/swipe_change
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_light_falloff.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha_damage.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_alpha_reflection.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_brdf_gloss_light.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_diffuse_reflection_gloss.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_gloss.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/bmw_m3_e92_2009/texture_bmw_m3_e92_2009_diffuse_00.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/dodge_challenger_srt8_392_2011/dodge_challenger_srt8_392_2011.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_00.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[2] trace: [AUTOLOG QUERY] Server: Blaze     Call: /nfs-2013-android/util/ping
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_light_falloff.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_damage.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_01.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_reflection_s
+android[4] ResourceManager: peedstripe.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_brdf_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_00.sba
+
+G6-RAW buttons=0x00000002
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2010 code=96 state=down
+android[6] error: Node /menus/garage/garage_select_car has no output for CLASS_FILTER_SUPER. Ignoring
+
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_generic_accept': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_generic_accept
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/texture_light_falloff.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_damage.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_alpha_reflection.
+android[4] ResourceManager: sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_brdf_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_reflectio
+android[4] ResourceManager: n_speedstripe.sba
+
+android[4] ResourceManager: Remove asset: /published/brdf/texture_sp_dodge_challenger_srt8_392_2011_green.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/dodge_challenger_srt8_392_2011/texture_dodge_challenger_srt8_392_2011_diffuse_01.sba
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 96
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key A AAAA .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press A .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2013 code=96 state=up
+android[5] warn: WARNING: loading model directly: /published/models/cars/lexus_lfa_2010/lexus_lfa_2010.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/lexus_lfa_2010/texture_lexus_lfa_2010_diffuse_00.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/lexus_lfa_2010/texture_lexus_lfa_2010_alpha.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_light_falloff.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_mostwanted_04.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/texture_fx_nitro.sba
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[5] warn: WARNING: loading model directly: /published/models/cars/fx_nitro.m3g
+
+android[4] ResourceManager: Add asset: /published/textures/cars/damage/texture_scratch.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_wheels.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/lexus_lfa_2010/texture_lexus_lfa_2010_alpha_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/lexus_lfa_2010/texture_lexus_lfa_2010_alpha_damage.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed_reflection.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/lexus_lfa_2010/texture_lexus_lfa_2010_diffuse_reflection_gloss.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_brdf_gloss_light.sba
+
+android[4] ResourceManager: Add asset: /published/brdf/texture_sp_gloss.sba
+
+android[4] ResourceManager: Add asset: /published/textures/cars/numberplates/texture_numberplate_need4speed.sba
+
+android[4] ResourceManager: Remove asset: /published/textures/cars/numberplates/texture_numberplate_mostwanted_04.sba
+
+G4-JNI GetEnv version=0x00010006
+G6-RAW buttons=0x00000200
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 20
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Down NNNN .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press Dpad Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2079 code=20 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 20
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Down NNNN .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press Dpad Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2088 code=20 state=up
+G7-FRAME enter=2100
+G5-GL STATE frame=2100 framebuffer=0 status=0x8cd5 errors=0
+G7-FRAME leave=2100
+G6-RAW buttons=0x00000400
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 21
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Left TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Left .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2106 code=21 state=down
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 21
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key DPAD Left TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Dpad Left .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2116 code=21 state=up
+G6-RAW buttons=0x00000001
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 97
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key B BBBB .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press B .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2124 code=97 state=down
+android[6] Sound/SoundManager/error: FMOD result of SoundManager::createSound: An error occured that wasn't supposed to.  Contact support. 
+
+android[5] Sound/SoundManager/warn: SoundManager::createSound - 'ui/ui/btn_generic_back': failure.
+
+android[2] trace: UI play sound: ui/ui/btn_generic_back
+
+G6-RAW buttons=0x00000000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 97
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key B BBBB .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key up .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Release .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press B .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2127 code=97 state=up
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_back_corner2
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_frame
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall_list
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: event_details_speedwall_entry
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: results_speedwall_personalbest
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: new_map_base
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: scrollbar_thumb
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: spinner
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: speedwall_footer
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: speedwall_header
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: medal_targets_event_details
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_achievementnotification_infrontend
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: hud_line
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: achievement_icon
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: profile_player
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: origin_logged_out
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_origin_temp
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: offline_online_indicator
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: friend_notifications
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: nav_mogaSelect
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: masked_line_most_wanted_goals
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: btn_car_action_large
+
+android[5] layouts/warning: LayoutEntity not in cache, reloading: lower_white_bar
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+android[6] layouts/error: Unable to locate layout entity: _name_header
+
+android[6] layouts/error: Unable to locate layout entity: _progress_bar
+
+android[2] trace: LayoutScreen::LayoutScreen OptionsSettingsScreen != 0
+
+android[2] trace: A.N. produce offset for race selection screen
+
+android[2] trace: ShowMogaHighlight start
+
+android[2] trace: ShowMogaHighlight 1
+
+android[2] trace: ShowMogaHighlight end
+
+android[5] layouts/warning: SetAnimation: Animation _idle not found in node /[NoID]
+
+G4-JNI GetEnv version=0x00010006
+G6-RAW buttons=0x00001000
+G6-TOUCH cursor=on frame=2367 position=320,240
+G6-MOGA key-suppressed frame=2367 code=109 state=down cursor=1
+G6-RAW buttons=0x00003000
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) MogaController :: Inside nativeOnKeyEvent 
+
+android[2] trace: ....................(KK) MogaController :: Inside nativeOnKeyEvent 108
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Start TTTT .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Key Event Key Down .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) Listener Key Press .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode (Start of func) .....................
+
+android[2] trace: MoGaConTrOlLeR :: ....................(KK) AndroidKeyCode :: MogaKeyCode Key Press Start(KeyB) .....................
+
+android[2] trace: MoGaConTrOlLeR :: (KK) MogaController :: Inside nativeOnKeyEvent ....................
+
+G6-MOGA key frame=2368 code=108 state=down
+G6-INPUT exit chord received frame=2368
+G7-LOOP PASS frames=2369 elapsed_ms=44087 fps=53.73
+G7-LOOP PASS teardown=process-exit (guest destroy skipped)
+G7 PROCESS EXIT PASS guest teardown deferred
+exit_code=0
+/opt/system/Tools/PortMaster/funcs.txt: line 136:  1597 Killed                  $ESUDO pkill -9 -f gptokeyb
+/opt/system/Tools/PortMaster/funcs.txt: line 136:  1607 Killed                  $ESUDO pkill -9 -f gptokeyb2

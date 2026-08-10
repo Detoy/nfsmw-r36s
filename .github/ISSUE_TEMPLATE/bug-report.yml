@@ -1,0 +1,50 @@
+name: Alpha bug report
+description: Report an R36S runtime, controller, audio, or setup problem
+title: "[Alpha bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach an APK, OBB, extracted `.so`, save file, or other game data.
+  - type: input
+    id: device
+    attributes:
+      label: Device and firmware
+      placeholder: R36S, ArkOS version/date
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: Release or mapper identity
+      placeholder: v0.1.0-alpha, mapper SHA-256/build ID if known
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include the exact screen and button sequence.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Sanitized log excerpt
+      description: Attach or paste the relevant part of ports/nfsmw/logs/nfsmw.log. Check it contains no private paths or game data.
+      render: shell
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Legal-data check
+      options:
+        - label: I have not attached or linked proprietary game files, extracted libraries, assets, audio, or saves.
+          required: true

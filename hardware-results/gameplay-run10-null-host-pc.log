@@ -1,0 +1,773 @@
+=== NFS Most Wanted R36S consolidated gameplay test ===
+Thu Sep  4 08:50:57 PM IST 2025
+Linux darkosre-r36 4.4.189 #62 SMP Sat Dec 13 08:49:45 CST 2025 aarch64 GNU/Linux
+CFW_NAME=dArkOSRE
+DEVICE_ARCH=aarch64
+DEVICE_HAS_ARMHF=Y
+mapper=/roms/ports/nfsmw-maptest/nfsmw_mapper: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=d2d2200f7af45f722d933c64b28913887936b4b0, with debug_info, not stripped
+GL: forcing the Mali blob from /usr/lib/arm-linux-gnueabihf/libmali-bifrost-g31-rxp0-gbm.so
+=== G2 MAP REGRESSION ===
+mapping[0]=/roms/ports/nfsmw-maptest/android-libs/libc++_shared.so
+module=/roms/ports/nfsmw-maptest/android-libs/libc++_shared.so soname=libc++_shared.so mapped=581632 bytes bias=0xf72a6000
+  needed=libc.so
+  needed=libdl.so
+  rel=3122 plt_rel=1087 relative_fastpath=1168
+mapping[1]=/roms/ports/nfsmw-maptest/android-libs/libfmodex.so
+module=/roms/ports/nfsmw-maptest/android-libs/libfmodex.so soname=libfmodex.so mapped=1097728 bytes bias=0xf70cc000
+  needed=libc.so
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=liblog.so
+  rel=1184 plt_rel=462 relative_fastpath=1178
+mapping[2]=/roms/ports/nfsmw-maptest/android-libs/libfmodevent.so
+module=/roms/ports/nfsmw-maptest/android-libs/libfmodevent.so soname=libfmodevent.so mapped=356352 bytes bias=0xf724f000
+  needed=libc.so
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=liblog.so
+  needed=libfmodex.so
+  rel=932 plt_rel=269 relative_fastpath=754
+mapping[3]=/roms/ports/nfsmw-maptest/android-libs/libNimble.so
+module=/roms/ports/nfsmw-maptest/android-libs/libNimble.so soname=libNimble.so mapped=20480 bytes bias=0xf75f4000
+  needed=libstdc++.so
+  needed=libm.so
+  needed=libdl.so
+  needed=libc.so
+  rel=8 plt_rel=30 relative_fastpath=3
+mapping[4]=/roms/ports/nfsmw-maptest/android-libs/libapp.so
+module=/roms/ports/nfsmw-maptest/android-libs/libapp.so soname=libapp.so mapped=11624448 bytes bias=0xf5ae3000
+  needed=libc++_shared.so
+  needed=libfmodex.so
+  needed=libfmodevent.so
+  needed=libGLESv2.so
+  needed=libEGL.so
+  needed=liblog.so
+  needed=libjnigraphics.so
+  needed=libNimble.so
+  needed=libc.so
+  needed=libm.so
+  needed=libdl.so
+  rel=48533 plt_rel=515 relative_fastpath=45699
+G2 PASS: mapped 5 ARM32 modules without guest execution
+=== G3 PROVIDER CENSUS (NO GUEST EXECUTION) ===
+Target host libraries opened (8): libc.so.6 libm.so.6 libdl.so.2 libpthread.so.0 libEGL.so.1 libEGL.so libGLESv2.so.2 libGLESv2.so
+Provider census: imports=982 guest=254 softfp=61 compat=186 host-candidate=479 unbridged=0 missing=2 weak=0
+Unbridged Bionic/Android APIs (0 unique):
+No target provider found (2 unique):
+  __assert2
+  __dso_handle
+G3-CENSUS PASS: target provider data captured; full relocation remains gated on ABI bridges
+=== G5/G6/G8 HOST PREFLIGHTS ===
+G5-HOST GLES vendor=ARM renderer=Mali-G31 version=OpenGL ES 3.2 v1.r13p0-01rel0.8747d14aec16ec21ac2b2da252c4ec5f drawable=640x480
+G5-HOST PASS SDL=KMSDRM GLES2 frames=3
+G6-HOST PASS controller=GO-Super Gamepad joysticks=1
+G8-HOST PASS driver=alsa format=44100Hz/2ch queued=4096 bytes
+HOST-PREFLIGHT PASS graphics=1 controller=1 audio=1
+=== G3 ARM REL RELOCATION PHASE A ===
+G3-REL libc++_shared.so total=4209 relative=1168 abs32=1767 glob=187 jump=1087 unresolved=0 first=none
+G3-REL libfmodex.so total=1646 relative=1178 abs32=4 glob=2 jump=462 unresolved=0 first=none
+G3-REL libfmodevent.so total=1201 relative=754 abs32=178 glob=0 jump=269 unresolved=0 first=none
+G3-REL libNimble.so total=38 relative=3 abs32=0 glob=5 jump=30 unresolved=0 first=none
+G3-REL libapp.so total=49048 relative=45699 abs32=2799 glob=35 jump=515 unresolved=0 first=none
+G3-REL providers guest=3043 softfp=59 host=462 alias=175 blocked=0 missing=0
+G3 FULL RELOCATION PASS processed=56142 unresolved=0; host providers retained
+=== G4 BIONIC SIGNAL/JUMP SELFTEST ===
+G4-SIGNAL PASS: sigaction, sigprocmask and siglongjmp
+=== G4 DEPENDENCY-ORDERED CONSTRUCTORS ===
+G4-CTOR enter module=libc++_shared.so kind=DT_INIT_ARRAY index=0 address=0xf72dd019
+G4-CTOR leave module=libc++_shared.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=0 address=0xf70f390c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=1 address=0xf70f4fec
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=1
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=2 address=0xf7110e34
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=2
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=3 address=0xf7114108
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=3
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=4 address=0xf7115014
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=4
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=5 address=0xf71165a4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=5
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=6 address=0xf7117078
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=6
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=7 address=0xf711b78c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=7
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=8 address=0xf7122cfc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=8
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=9 address=0xf7126a3c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=9
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=10 address=0xf71293d4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=10
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=11 address=0xf7132910
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=11
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=12 address=0xf71335ac
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=12
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=13 address=0xf7134cb8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=13
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=14 address=0xf7135514
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=14
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=15 address=0xf71386d4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=15
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=16 address=0xf7139528
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=16
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=17 address=0xf71398d8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=17
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=18 address=0xf713c2bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=18
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=19 address=0xf713fe14
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=19
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=20 address=0xf7140c5c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=20
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=21 address=0xf7141c24
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=21
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=22 address=0xf71447d8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=22
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=23 address=0xf7145870
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=23
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=24 address=0xf7146108
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=24
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=25 address=0xf71486e8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=25
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=26 address=0xf7149bc0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=26
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=27 address=0xf714a330
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=27
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=28 address=0xf714adb8
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=28
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=29 address=0xf714b8bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=29
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=30 address=0xf714d5ec
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=30
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=31 address=0xf714dff0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=31
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=32 address=0xf714eeb4
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=32
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=33 address=0xf714f2bc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=33
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=34 address=0xf714f830
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=34
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=35 address=0xf7152124
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=35
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=36 address=0xf715acfc
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=36
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=37 address=0xf715d288
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=37
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=38 address=0xf7171878
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=38
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=39 address=0xf7171c6c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=39
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=40 address=0xf717307c
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=40
+G4-CTOR enter module=libfmodex.so kind=DT_INIT_ARRAY index=41 address=0xf71738f0
+G4-CTOR leave module=libfmodex.so kind=DT_INIT_ARRAY index=41
+G4-CTOR enter module=libfmodevent.so kind=DT_INIT_ARRAY index=0 address=0xf729a740
+G4-CTOR leave module=libfmodevent.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=0 address=0xf5b57098
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=0
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=1 address=0xf5b56148
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=1
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=2 address=0xf5b4b44c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=2
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=3 address=0xf5b4b508
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=3
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=4 address=0xf5b4b5f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=4
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=5 address=0xf5b4b6d8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=5
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=6 address=0xf5b4b7c0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=6
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=7 address=0xf5b4b8a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=7
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=8 address=0xf5b4b968
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=8
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=9 address=0xf5b4bac8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=9
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=10 address=0xf5b4bb4c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=10
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=11 address=0xf5b4bbe0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=11
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=12 address=0xf5b4bbfc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=12
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=13 address=0xf5b4bcf0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=13
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=14 address=0xf5b4bd7c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=14
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=15 address=0xf5b4be18
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=15
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=16 address=0xf5b4bf00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=16
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=17 address=0xf5b4bf38
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=17
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=18 address=0xf5b4c020
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=18
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=19 address=0xf5b4c114
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=19
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=20 address=0xf5b4c4c8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=20
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=21 address=0xf5b4c5c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=21
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=22 address=0xf5b4c5fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=22
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=23 address=0xf5b4c7ac
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=23
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=24 address=0xf5b4c828
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=24
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=25 address=0xf5b4c88c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=25
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=26 address=0xf5b4c8a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=26
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=27 address=0xf5b4c9a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=27
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=28 address=0xf5b4c9c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=28
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=29 address=0xf5b4ca94
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=29
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=30 address=0xf5b4cab0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=30
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=31 address=0xf5b4cacc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=31
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=32 address=0xf5b4cb2c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=32
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=33 address=0xf5b4cc78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=33
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=34 address=0xf5b4cedc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=34
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=35 address=0xf5b4d140
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=35
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=36 address=0xf5b4d3a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=36
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=37 address=0xf5b4d658
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=37
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=38 address=0xf5b4dbbc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=38
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=39 address=0xf5b4dc48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=39
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=40 address=0xf5b4dc78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=40
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=41 address=0xf5b4dcdc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=41
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=42 address=0xf5b4dd68
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=42
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=43 address=0xf5b4dd84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=43
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=44 address=0xf5b4de10
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=44
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=45 address=0xf5b4de48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=45
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=46 address=0xf5b4ded4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=46
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=47 address=0xf5b4df60
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=47
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=48 address=0xf5b4e048
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=48
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=49 address=0xf5b4e0b8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=49
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=50 address=0xf5b4e134
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=50
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=51 address=0xf5b4e450
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=51
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=52 address=0xf5b4e91c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=52
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=53 address=0xf5b4ea1c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=53
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=54 address=0xf5b4ec18
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=54
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=55 address=0xf5b4ee34
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=55
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=56 address=0xf5b4efe4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=56
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=57 address=0xf5b4f148
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=57
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=58 address=0xf5b4f2e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=58
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=59 address=0xf5b4f488
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=59
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=60 address=0xf5b4f620
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=60
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=61 address=0xf5b4f7cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=61
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=62 address=0xf5b4f91c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=62
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=63 address=0xf5b4fa00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=63
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=64 address=0xf5b4fb00
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=64
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=65 address=0xf5b50000
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=65
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=66 address=0xf5b50028
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=66
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=67 address=0xf5b5006c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=67
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=68 address=0xf5b50180
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=68
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=69 address=0xf5b50264
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=69
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=70 address=0xf5b502f4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=70
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=71 address=0xf5b503ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=71
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=72 address=0xf5b5059c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=72
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=73 address=0xf5b50684
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=73
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=74 address=0xf5b5072c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=74
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=75 address=0xf5b50764
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=75
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=76 address=0xf5b5084c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=76
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=77 address=0xf5b50944
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=77
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=78 address=0xf5b50bb4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=78
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=79 address=0xf5b50c14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=79
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=80 address=0xf5b50cfc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=80
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=81 address=0xf5b50e7c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=81
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=82 address=0xf5b50f78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=82
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=83 address=0xf5b50fb8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=83
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=84 address=0xf5b5111c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=84
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=85 address=0xf5b51154
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=85
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=86 address=0xf5b5124c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=86
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=87 address=0xf5b512f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=87
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=88 address=0xf5b51320
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=88
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=89 address=0xf5b513f0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=89
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=90 address=0xf5b514c0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=90
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=91 address=0xf5b515f8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=91
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=92 address=0xf5b51664
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=92
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=93 address=0xf5b51764
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=93
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=94 address=0xf5b517b0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=94
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=95 address=0xf5b517e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=95
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=96 address=0xf5b51858
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=96
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=97 address=0xf5b519a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=97
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=98 address=0xf5b519ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=98
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=99 address=0xf5b51a14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=99
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=100 address=0xf5b51a3c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=100
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=101 address=0xf5b51a64
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=101
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=102 address=0xf5b51ad4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=102
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=103 address=0xf5b51afc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=103
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=104 address=0xf5b51f0c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=104
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=105 address=0xf5b51fc0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=105
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=106 address=0xf5b51fe8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=106
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=107 address=0xf5b52010
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=107
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=108 address=0xf5b5206c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=108
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=109 address=0xf5b520fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=109
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=110 address=0xf5b521e4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=110
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=111 address=0xf5b52270
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=111
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=112 address=0xf5b52298
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=112
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=113 address=0xf5b522f4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=113
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=114 address=0xf5b52364
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=114
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=115 address=0xf5b5238c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=115
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=116 address=0xf5b523b4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=116
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=117 address=0xf5b523dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=117
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=118 address=0xf5b52404
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=118
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=119 address=0xf5b524b0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=119
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=120 address=0xf5b527dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=120
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=121 address=0xf5b52900
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=121
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=122 address=0xf5b52928
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=122
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=123 address=0xf5b52950
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=123
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=124 address=0xf5b52978
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=124
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=125 address=0xf5b529d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=125
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=126 address=0xf5b529fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=126
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=127 address=0xf5b52a24
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=127
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=128 address=0xf5b52dd0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=128
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=129 address=0xf5b53054
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=129
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=130 address=0xf5b53154
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=130
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=131 address=0xf5b531e8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=131
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=132 address=0xf5b533a8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=132
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=133 address=0xf5b53550
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=133
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=134 address=0xf5b53578
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=134
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=135 address=0xf5b535d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=135
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=136 address=0xf5b535fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=136
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=137 address=0xf5b53890
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=137
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=138 address=0xf5b539cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=138
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=139 address=0xf5b53c48
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=139
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=140 address=0xf5b53ec4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=140
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=141 address=0xf5b542e4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=141
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=142 address=0xf5b546ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=142
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=143 address=0xf5b54758
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=143
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=144 address=0xf5b547cc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=144
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=145 address=0xf5b548c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=145
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=146 address=0xf5b549ac
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=146
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=147 address=0xf5b54aa4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=147
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=148 address=0xf5b54b8c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=148
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=149 address=0xf5b54ce0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=149
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=150 address=0xf5b54d14
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=150
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=151 address=0xf5b54d44
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=151
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=152 address=0xf5b54d84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=152
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=153 address=0xf5b54e78
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=153
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=154 address=0xf5b54f5c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=154
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=155 address=0xf5b55044
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=155
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=156 address=0xf5b5508c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=156
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=157 address=0xf5b55134
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=157
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=158 address=0xf5b5517c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=158
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=159 address=0xf5b551c4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=159
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=160 address=0xf5b553a4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=160
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=161 address=0xf5b554dc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=161
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=162 address=0xf5b55540
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=162
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=163 address=0xf5b559b4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=163
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=164 address=0xf5b55a10
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=164
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=165 address=0xf5b55e84
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=165
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=166 address=0xf5b55ef8
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=166
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=167 address=0xf5b55f6c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=167
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=168 address=0xf5b55fe0
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=168
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=169 address=0xf5b56060
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=169
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=170 address=0xf6110a70
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=170
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=171 address=0xf5b56264
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=171
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=172 address=0xf5b56268
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=172
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=173 address=0xf5b562ec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=173
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=174 address=0xf5b563bc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=174
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=175 address=0xf5b567d4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=175
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=176 address=0xf5b5680c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=176
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=177 address=0xf5b56a8c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=177
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=178 address=0xf5b56d0c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=178
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=179 address=0xf5b56dec
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=179
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=180 address=0xf5b56e94
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=180
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=181 address=0xf5b56ed4
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=181
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=182 address=0xf5b570fc
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=182
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=183 address=0xf5b57100
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=183
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=184 address=0xf5b57220
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=184
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=185 address=0xf5b5729c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=185
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=186 address=0xf5b5733c
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=186
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=187 address=0xf5b57631
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=187
+G4-CTOR enter module=libapp.so kind=DT_INIT_ARRAY index=188 address=0xf5b577b1
+G4-CTOR leave module=libapp.so kind=DT_INIT_ARRAY index=188
+G4-CTOR PASS initializers=233
+G4-OBB PASS path=/roms/ports/nfsmw-maptest/main.1003128.com.ea.games.nfs13_row.obb entries=2411
+G5-RUNTIME PASS persistent GLES drawable=640x480
+G6-RUNTIME PASS controller=GO-Super Gamepad
+=== G4 JNI_OnLoad ===
+G4-JNI GetEnv version=0x00010002
+G4-JNI leave JNI_OnLoad version=0x00010002
+=== G4 nativeOnCreate ===
+G4-JNI GetMethodID name=forEach signature=(Ljava/lang/String;)[Ljava/lang/String; id=0xaad26cf8
+G4-JNI GetMethodID name=getAssetSize signature=(Ljava/lang/String;)I id=0xaad26dfc
+G4-JNI GetMethodID name=getObbFullPath signature=()Ljava/lang/String; id=0xaad26f00
+G4-JNI GetStaticMethodID name=isAnyMusicPlaying signature=()Z id=0xaad27004
+G4-JNI GetMethodID name=useAssetsFileSystem signature=()Z id=0xaad27108
+G4-JNI GetMethodID name=isObbAssets signature=()Z id=0xaad2720c
+G4-JNI GetMethodID name=isFullApkAssets signature=()Z id=0xaad27310
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=java/io/File
+G4-JNI GetMethodID name=getAbsolutePath signature=()Ljava/lang/String; id=0xaad27414
+G4-JNI FindClass name=android/os/Environment
+G4-JNI GetStaticMethodID name=getExternalStorageDirectory signature=()Ljava/io/File; id=0xaad27518
+G4-JNI GetMethodID name=getFilesDir signature=()Ljava/io/File; id=0xaad2761c
+G4-JNI GetMethodID name=getPackageName signature=()Ljava/lang/String; id=0xaad27720
+G4-JNI GetMethodID name=getPerformanceScore signature=()F id=0xaad27824
+G4-JNI GetMethodID name=getTotalMemory signature=()I id=0xaad27928
+G4-JNI FindClass name=android/util/DisplayMetrics
+G4-JNI GetMethodID name=getDisplayMetrics signature=()Landroid/util/DisplayMetrics; id=0xaad27a2c
+G4-JNI GetFieldID name=density signature=F
+G4-JNI GetFieldID name=densityDpi signature=I
+G4-JNI GetFieldID name=widthPixels signature=I
+G4-JNI GetFieldID name=heightPixels signature=I
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetDeviceName signature=()Ljava/lang/String; id=0xaad27b30
+G4-JNI GetStaticMethodID name=GetDeviceLocale signature=()Ljava/lang/String; id=0xaad27c34
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetDefaultLanguage signature=()Ljava/lang/String; id=0xaad27d38
+G4-JNI FindClass name=com/ea/ironmonkey/GameActivityMain
+G4-JNI GetStaticMethodID name=GetApplicationVersion signature=()Ljava/lang/String; id=0xaad27e3c
+G4-JNI GetStaticMethodID name=getOsVersion signature=()Ljava/lang/String; id=0xaad27f40
+android[4] info: InternalStorageDirectory = ./files
+
+android[4] info: ExternalStorageDirectory = ./Android/data/com.ea.games.nfs13_row
+
+android[4] info: DeviceName = R36S
+
+android[4] info: DefaultLanguage = en
+
+android[4] info: ApplicationVersion = 1.3.128
+
+android[4] info: ScreenDensity = 1
+
+android[4] info: ScreenDensityDPI = 160
+
+android[4] info: ScreenWidthPixels = 640
+
+android[4] info: ScreenHeightPixels = 480
+
+android[4] info: ContentScale (derived) = 1
+
+android[4] info: PerformanceScore = 100
+
+android[4] info: TotalMemoryMb = 768
+
+android[4] info: OsVersion = 4.4.4
+
+android[4] info: Tier = Higest
+
+G4-JNI GetStaticMethodID name=isAmazon signature=()Z id=0xaad28044
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getRunLoop signature=()Lcom/ea/ironmonkey/RunLoop; id=0xaad28148
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=start signature=()V id=0xaad2824c
+android[4] info: Tier = Higest
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI GetMethodID name=getClassLoader signature=()Ljava/lang/ClassLoader; id=0xaad28350
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI GetMethodID name=loadClass signature=(Ljava/lang/String;)Ljava/lang/Class; id=0xaad28454
+G4-JNI UNKNOWN table call guest-return=0xf5d47ef4
+G4-JNI GetStaticMethodID name=getInstance signature=(Landroid/content/Context;)Lcom/bda/controller/Controller; id=0xaad28558
+G4-JNI GetMethodID name=init signature=()Z id=0xaad2865c
+G4-JNI GetMethodID name=exit signature=()V id=0xaad28760
+G4-JNI GetMethodID name=getAxisValue signature=(I)F id=0xaad28864
+G4-JNI GetMethodID name=getInfo signature=(I)I id=0xaad28968
+G4-JNI GetMethodID name=getKeyCode signature=(I)I id=0xaad28a6c
+G4-JNI GetMethodID name=getState signature=(I)I id=0xaad28b70
+G4-JNI GetMethodID name=onPause signature=()V id=0xaad28c74
+G4-JNI GetMethodID name=onResume signature=()V id=0xaad28d78
+G4-JNI GetMethodID name=setListener signature=(Lcom/bda/controller/ControllerListener;Landroid/os/Handler;)V id=0xaad28e7c
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5d48ccc
+G4-JNI GetMethodID name=getAction signature=()I id=0xaad28f80
+G4-JNI GetMethodID name=getControllerId signature=()I id=0xaad29084
+G4-JNI GetMethodID name=getEventTime signature=()J id=0xaad29188
+G4-JNI GetMethodID name=getKeyCode signature=()I id=0xaad2928c
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5d4a784
+G4-JNI GetMethodID name=findPointerIndex signature=(I)I id=0xaad29390
+G4-JNI GetMethodID name=getAxisValue signature=(II)F id=0xaad29494
+G4-JNI GetMethodID name=getPointerCount signature=()I id=0xaad29598
+G4-JNI GetMethodID name=getPointerId signature=(I)I id=0xaad2969c
+G4-JNI GetMethodID name=getRawX signature=()F id=0xaad297a0
+G4-JNI GetMethodID name=getRawY signature=()F id=0xaad298a4
+G4-JNI GetMethodID name=getX signature=()F id=0xaad299a8
+G4-JNI GetMethodID name=getX signature=(I)F id=0xaad29aac
+G4-JNI GetMethodID name=getXPrecision signature=()F id=0xaad29bb0
+G4-JNI GetMethodID name=getY signature=()F id=0xaad29cb4
+G4-JNI GetMethodID name=getY signature=(I)F id=0xaad29db8
+G4-JNI GetMethodID name=getYPrecision signature=()F id=0xaad29ebc
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5d4ae10
+G4-JNI GetMethodID name=getState signature=()I id=0xaad29fc0
+G4-JNI GetFieldID name=mIsBound signature=Z
+G4-JNI FindClass name=android/content/Intent
+G4-JNI GetMethodID name=<init> signature=(Ljava/lang/String;)V id=0xaad2a0c4
+G4-JNI GetMethodID name=setPackage signature=(Ljava/lang/String;)Landroid/content/Intent; id=0xaad2a1c8
+G4-JNI GetFieldID name=mContext signature=Landroid/content/Context;
+G4-JNI GetFieldID name=mServiceConnection signature=Lcom/bda/controller/Controller$ServiceConnection;
+G4-JNI FindClass name=android/content/Context
+G4-JNI GetMethodID name=startService signature=(Landroid/content/Intent;)Landroid/content/ComponentName; id=0xaad2a2cc
+G4-JNI GetMethodID name=bindService signature=(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z id=0xaad2a3d0
+G4-JNI FindClass name=android/app/NativeActivity
+G4-JNI FindClass name=java/lang/ClassLoader
+G4-JNI UNKNOWN table call guest-return=0xf5d49f1c
+G4-JNI GetMethodID name=<init> signature=()V id=0xaad2a4d4
+G4-JNI PASS JNI_OnLoad/nativeOnCreate methods=56
+=== G5 GAME SURFACE ===
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=android/view/ViewRoot
+G4-JNI GetMethodID name=setProcessPositionEvents signature=(Z)V id=0xaad2a5d8
+G4-JNI GetMethodID name=GetViewRoot signature=()Landroid/view/ViewParent; id=0xaad2a6dc
+android[4] ResourceManager: ContextLost() 
+
+android[4] ResourceManager: mIAssetV.empty()? 1 mTextureV.empty()? 1
+
+G5-SURFACE PASS lifecycle returned
+=== G6/G7 GAME LOOP (Back+Start exits) ===
+G7-FRAME enter=0
+android[4] info: OpenGL-ES extensions: GL_ARM_rgba8 GL_ARM_mali_shader_binary GL_OES_depth24 GL_OES_depth_texture GL_OES_depth_texture_cube_map
+android[4] info:  GL_OES_packed_depth_stencil GL_OES_rgb8_rgba8 GL_EXT_read_format_bgra GL_OES_compressed_paletted_texture GL_OES_compressed_ET
+android[4] info: C1_RGB8_texture GL_OES_standard_derivatives GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_
+android[4] info: EGL_sync GL_OES_texture_npot GL_OES_vertex_half_float GL_OES_required_internalformat GL_OES_vertex_array_object GL_OES_mapbuff
+android[4] info: er GL_EXT_texture_format_BGRA8888 GL_EXT_texture_rg GL_EXT_texture_type_2_10_10_10_REV GL_OES_fbo_render_mipmap GL_OES_element
+android[4] info: _index_uint GL_EXT_shadow_samplers GL_OES_texture_compression_astc GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compress
+android[4] info: ion_astc_hdr GL_KHR_texture_compression_astc_sliced_3d GL_EXT_texture_compression_astc_decode_mode GL_EXT_texture_compression_
+android[4] info: astc_decode_mode_rgb9e5 GL_KHR_debug GL_EXT_occlusion_query_boolean GL_EXT_disjoint_timer_query GL_EXT_blend_minmax GL_EXT_dis
+android[4] info: card_framebuffer GL_OES_get_program_binary GL_OES_texture_3D GL_EXT_texture_storage GL_EXT_multisampled_render_to_texture GL_O
+android[4] info: ES_surfaceless_context GL_OES_texture_stencil8 GL_EXT_shader_pixel_local_storage GL_ARM_shader_framebuffer_fetch GL_ARM_shader
+android[4] info: _framebuffer_fetch_depth_stencil GL_ARM_mali_program_binary GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_texture_sRGB_decode G
+android[4] info: L_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_OES_te
+android[4] info: xture_storage_multisample_2d_array GL_OES_shader_image_atomic GL_EXT_robustness GL_EXT_draw_buffers_indexed GL_OES_draw_buffer
+android[4] info: s_indexed GL_EXT_texture_border_clamp GL_OES_texture_border_clamp GL_EXT_texture_cube_map_array GL_OES_texture_cube_map_array 
+android[4] info: GL_OES_sample_variables GL_OES_sample_shading GL_OES_shader_multisample_interpolation GL_EXT_shader_io_blocks GL_OES_shader_io
+android[4] info: _blocks GL_EXT_tessellation_shader GL_OES_tessellation_shader GL_EXT_primitive_bounding_box GL_OES_primitive_bounding_box GL_E
+android[4] info: XT_geometry_shader GL_OES_geometry_shader GL_ANDROID_extension_pack_es31a GL_EXT_gpu_shader5 GL_OES_gpu_shader5 GL_EXT_texture
+android[4] info: _buffer GL_OES_texture_buffer GL_EXT_copy_image GL_OES_copy_image GL_EXT_shader_non_constant_global_initializers GL_EXT_color_
+android[4] info: buffer_half_float GL_EXT_color_buffer_float GL_EXT_YUV_target GL_OVR_multiview GL_OVR_multiview2 GL_OVR_multiview_multisampled
+android[4] info: _render_to_texture GL_KHR_robustness GL_KHR_robust_buffer_access_behavior GL_EXT_draw_elements_base_vertex GL_OES_draw_element
+android[4] info: s_base_vertex GL_EXT_buffer_storage 
+
+android[4] info: Renderer: Mali-G31
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getGameGLSurfaceView signature=()Lcom/ea/ironmonkey/GameGLSurfaceView; id=0xaad2a7e0
+G4-JNI GetMethodID name=getWidth signature=()I id=0xaad2a8e4
+G4-JNI GetMethodID name=getHeight signature=()I id=0xaad2a9e8
+android[5] warn: OpenGL Renderer: Mali-G31
+
+android[5] warn: Isis Renderer Capabilities:
+
+android[5] warn: 	Max Texture Size:      8192
+
+android[5] warn: 	FB Max Samples:        0
+
+android[5] warn: 	EXT: FB Discard:       1
+
+android[5] warn: 	EXT: Occlusion Queries 0
+
+android[5] warn: 	EXT: Texture Max Level 0
+
+android[5] warn: 	EXT: Framebuffer Fetch 0
+
+android[5] warn: 	EXT: Depth Texture     1
+
+android[5] warn: 	EXT: VAO               1
+
+android[4] info: Tier = Higest
+
+android[2] trace: PERFORMANCE - level = 4
+
+android[5] warn: Primary view size: 640  480
+
+G4-JNI GetEnv version=0x00010002
+G4-JNI GetMethodID name=getAccelerometer signature=()Lcom/ea/ironmonkey/Accelerometer; id=0xaad2aaec
+G4-JNI GetMethodID name=setFrequency signature=(F)V id=0xaad2abf0
+G4-JNI GetMethodID name=setBufferSize signature=(I)V id=0xaad2acf4
+G4-JNI GetMethodID name=getSamples signature=(I[I[F)I id=0xaad2adf8
+G4-JNI GetEnv version=0x00010002
+G4-JNI FindClass name=com/ea/ironmonkey/BitmapGraphics
+G4-JNI GetStaticMethodID name=createPaintFromFamilyName signature=(Ljava/lang/String;F)Landroid/graphics/Paint; id=0xaad2aefc
+G4-JNI GetMethodID name=getTextSize signature=()F id=0xaad2b000
+G4-JNI GetMethodID name=setTextSize signature=(F)V id=0xaad2b104
+G4-JNI FindClass name=android/graphics/Paint$FontMetricsInt
+G4-JNI GetMethodID name=getFontMetricsInt signature=()Landroid/graphics/Paint$FontMetricsInt; id=0xaad2b208
+G4-JNI GetFieldID name=ascent signature=I
+G4-JNI GetFieldID name=descent signature=I
+G4-JNI GetFieldID name=bottom signature=I
+G4-JNI GetFieldID name=top signature=I
+G4-JNI GetFieldID name=leading signature=I
+G4-JNI GetMethodID name=measureText signature=(Ljava/lang/String;)F id=0xaad2b30c
+android[4] EAStdC.Printf: [NimbleWrapper] ICoreAllocator::GetDefaultAllocator() is 0xf65bdb1c
+android[4] EAStdC.Printf: [NimbleWrapper] alloc free check
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::NimbleWrapper()
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::Init(), allocator=f65bdb1c
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::FinishInitialization()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20::OpenGLES20()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20Ext::OpenGLES20Ext()
+android[4] EAStdC.Printf: [Graphics] OpenGLES20Ext::LoadExtensions()...
+android[4] EAStdC.Printf: [Graphics] ...OpenGLES20Ext::LoadExtensions()
+android[4] EAStdC.Printf: [NimbleWrapper] NimbleWrapper::InitNimble()
+G-CRASH signal=11 address=0x00000000 pc=0xf75f4f2c lr=0xf75f4f6d sp=0xff919860
+exit_code=139
+/opt/system/Tools/PortMaster/funcs.txt: line 136:  1486 Killed                  $ESUDO pkill -9 -f gptokeyb
+/opt/system/Tools/PortMaster/funcs.txt: line 136:  1493 Killed                  $ESUDO pkill -9 -f gptokeyb2

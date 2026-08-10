@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gameList>
+  <game>
+    <path>./Need for Speed Most Wanted.sh</path>
+    <name>Need for Speed: Most Wanted</name>
+    <desc>Port of the 2012 Android racing game. Original EA game files are required.</desc>
+    <releasedate>20121030T000000</releasedate>
+    <developer>Firemonkeys Studios</developer>
+    <publisher>Electronic Arts</publisher>
+    <genre>Racing</genre>
+  </game>
+</gameList>

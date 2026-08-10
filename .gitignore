@@ -1,0 +1,23 @@
+# User-owned proprietary inputs and extracted payloads
+*.apk
+*.obb
+gamefiles/
+research/native/
+sd-test/
+**/android-libs/
+
+# Local build and interpreter output
+**/build/
+**/dist/
+**/nfsmw_mapper
+**/nfsmw_runtime
+*.o
+__pycache__/
+*.pyc
+
+# Historical card-ready copies are generated from the source snapshots.
+run*/portmaster/
+
+# Local OS and oversized raw captures
+.DS_Store
+*.tga

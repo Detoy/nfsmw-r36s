@@ -1,0 +1,24 @@
+{
+    "version": 4,
+    "name": "nfsmw.zip",
+    "items": ["Need for Speed Most Wanted.sh", "nfsmw"],
+    "items_opt": null,
+    "attr": {
+        "title": "Need for Speed: Most Wanted",
+        "porter": ["R36S NFS MW compatibility project"],
+        "desc": "ARMv7 compatibility port of the 2012 Android release. Original EA game files are not included.",
+        "desc_md": null,
+        "inst": "Copy the supported 1.3.128 APK and main.1003128.com.ea.games.nfs13_row.obb into ports/nfsmw/gamedata, then launch once.",
+        "inst_md": null,
+        "genres": ["racing"],
+        "image": {},
+        "rtr": false,
+        "exp": true,
+        "runtime": [],
+        "store": [],
+        "availability": "paid",
+        "reqs": ["opengl"],
+        "arch": ["armhf"],
+        "min_glibc": ""
+    }
+}

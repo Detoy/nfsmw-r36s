@@ -1,0 +1,2 @@
+*.log linguist-generated=true -diff
+*.png binary
