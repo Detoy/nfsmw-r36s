@@ -3,8 +3,6 @@
 An experimental compatibility port of the 2012 Android release of *Need for
 Speed: Most Wanted* for the R36S and ArkOS.
 
-![Gameplay on R36S](portmaster/nfsmw/screenshot.png)
-
 > **Public alpha:** races are playable with working controls and sound effects.
 > One pre-race car-selection action still requires a timing workaround. See
 > [Known issues](KNOWN_ISSUES.md) before installing.
