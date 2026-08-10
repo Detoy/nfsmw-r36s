@@ -18,6 +18,10 @@ __pycache__/
 # Historical card-ready copies are generated from the source snapshots.
 run*/portmaster/
 
+# Private development journal and archived hardware experiments
+hardware-results/
+run[0-9]*/
+
 # Local OS and oversized raw captures
 .DS_Store
 *.tga

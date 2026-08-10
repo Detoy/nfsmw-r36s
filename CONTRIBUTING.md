@@ -11,7 +11,7 @@ documentation, hashes, and diagnostic logs that do not embed game payloads.
 
 ## Start here
 
-1. Read [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and the latest entries in
+1. Read [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and
    [PORTING_STATUS.md](PORTING_STATUS.md).
 2. Use the pinned APK/OBB hashes documented in [README.md](README.md), obtained
    from your own lawful copy.
@@ -20,9 +20,9 @@ documentation, hashes, and diagnostic logs that do not embed game payloads.
 4. Run the compatibility, soft-float, native-import and OBB-index checks.
 5. Test on real R36S hardware and preserve a minimal log.
 
-The shipping alpha is the reverted Run 29 baseline. Experimental Run 30–32
-source snapshots and logs are retained for comparison, but should not be used
-as the starting point for a release build.
+The public alpha source in `runtime/` is the stable hardware-tested baseline.
+Failed controller experiments are summarized in the status document and issue
+tracker so contributors do not need to repeat them.
 
 ## Reports and patches
 
