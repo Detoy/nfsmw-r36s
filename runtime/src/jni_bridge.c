@@ -300,6 +300,9 @@ static struct fake_object moga_listener = {
 static struct fake_object fmod_audio_device = {
     .magic = FAKE_MAGIC, .kind = FAKE_GENERIC
 };
+static struct fake_object surface_view = {
+    .magic = FAKE_MAGIC, .kind = FAKE_GENERIC
+};
 
 static struct fake_method *as_method(void *value);
 
@@ -763,6 +766,7 @@ static void *dispatch_object(void *receiver, struct fake_method *method,
     if (strcmp(name, "getPackageName") == 0)
         return new_string("com.ea.games.nfs13_row");
     if (strcmp(name, "getRunLoop") == 0) return &run_loop;
+    if (strcmp(name, "getGameGLSurfaceView") == 0) return &surface_view;
     if (strcmp(name, "getDisplayMetrics") == 0) return &display_metrics;
     if (strcmp(name, "getFilesDir") == 0)
         return new_object(FAKE_FILE, "./files", 0U);
@@ -869,6 +873,9 @@ static void *jni_call_object_method_a(void *environment, void *object,
         return new_string("com.ea.games.nfs13_row");
     if (method != NULL && strcmp(method->name, "getRunLoop") == 0)
         return &run_loop;
+    if (method != NULL &&
+        strcmp(method->name, "getGameGLSurfaceView") == 0)
+        return &surface_view;
     if (method != NULL && strcmp(method->name, "getDisplayMetrics") == 0)
         return &display_metrics;
     if (method != NULL && strcmp(method->name, "getStatus") == 0)
@@ -2146,7 +2153,7 @@ int nfsmw_jni_run(const struct elf32_image *fmod_image,
                     buttons[6] == 0U) {
                     cursor_visible = cursor_visible == 0;
                     if (cursor_visible == 0 && touch_down != 0) {
-                        touch(&jni_handle, &activity, 1, 0,
+                        touch(&jni_handle, &surface_view, 1, 0,
                               (float)cursor_x, (float)cursor_y);
                         touch_down = 0;
                     }
@@ -2177,7 +2184,7 @@ int nfsmw_jni_run(const struct elf32_image *fmod_image,
                 if (buttons[index] != 0U && cursor_visible != 0 &&
                     (index == 9U || index == 10U)) {
                     if (touch_down != 0) {
-                        touch(&jni_handle, &activity, 1, 0,
+                        touch(&jni_handle, &surface_view, 1, 0,
                               (float)cursor_x, (float)cursor_y);
                         touch_down = 0;
                     }
@@ -2187,14 +2194,14 @@ int nfsmw_jni_run(const struct elf32_image *fmod_image,
                 }
                 if (buttons[index] != 0U && cursor_visible != 0 &&
                     index == 0U && touch_down == 0) {
-                    touch(&jni_handle, &activity, 0, 0,
+                    touch(&jni_handle, &surface_view, 0, 0,
                           (float)cursor_x, (float)cursor_y);
                     touch_down = 1;
                     (void)printf("G6-TOUCH down frame=%u position=%d,%d\n",
                                  frame, cursor_x, cursor_y);
                 }
                 if (index == 0U && buttons[index] == 0U && touch_down != 0) {
-                    touch(&jni_handle, &activity, 1, 0,
+                    touch(&jni_handle, &surface_view, 1, 0,
                           (float)cursor_x, (float)cursor_y);
                     touch_down = 0;
                     (void)printf("G6-TOUCH up frame=%u position=%d,%d\n",
