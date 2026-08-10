@@ -1,5 +1,8 @@
 # Known issues and community help wanted
 
+Discussion and proposed fixes for the primary blocker belong in
+[GitHub issue #1](https://github.com/Detoy/nfsmw-r36s/issues/1).
+
 ## Pre-race car selection and purchase
 
 This is the one known progression blocker in `v0.1.0-alpha`.

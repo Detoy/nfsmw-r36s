@@ -977,6 +977,13 @@ purchase action; the quick-A workaround is reliable but not release-quality.
   `v0.1.0-alpha` PortMaster archive passes ZIP integrity checks, contains 11
   expected public files, and has SHA-256
   `3f139a3eb68f00c9b9753a074d1a9bb99578061573553db2ebd5488d6ef70fb1`.
+- Public alpha published on 2026-08-10 at
+  `https://github.com/Detoy/nfsmw-r36s/releases/tag/v0.1.0-alpha`.
+  GitHub independently reports the release asset digest as
+  `sha256:3f139a3eb68f00c9b9753a074d1a9bb99578061573553db2ebd5488d6ef70fb1`.
+  The source repository is public at `https://github.com/Detoy/nfsmw-r36s`,
+  and the remaining car-selection/touch-registration blocker is open as
+  help-wanted issue 1 at `https://github.com/Detoy/nfsmw-r36s/issues/1`.
 
 ## Gates
 
@@ -992,7 +999,7 @@ purchase action; the quick-A workaround is reliable but not release-quality.
 | G7 silent gameplay | PASS: THREE RACES / SMOOTH ANALOG | one race completes with audio intentionally disabled |
 | G8 audio | SFX PASS / MUSIC DISABLED | original FMOD mixer produces stable effects; failed soundtrack retries suppressed |
 | G9 performance | PASS: 48.84 FPS WITH SFX | high graphics race is playable with only minor localized drops |
-| G10 packaging | PUBLIC ALPHA PREPARED | publish the clean v0.1.0-alpha archive and community help request |
+| G10 packaging | PUBLIC ALPHA PUBLISHED | collect community reports and review fixes through issue 1 |
 
 ## Implementation order
 

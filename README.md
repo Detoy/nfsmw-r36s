@@ -57,7 +57,8 @@ See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the community help request,
 
 ## Install the alpha
 
-1. Download `nfsmw-r36s-v0.1.0-alpha.zip` from the GitHub release.
+1. Download `nfsmw-r36s-v0.1.0-alpha.zip` from the
+   [v0.1.0-alpha release](https://github.com/Detoy/nfsmw-r36s/releases/tag/v0.1.0-alpha).
 2. Install it through PortMaster or extract it at the root of the ROMs card.
 3. Put the supported APK and OBB in `ports/nfsmw/gamedata/`.
 4. Start the port. First launch verifies both files and extracts five ARMv7
@@ -101,4 +102,5 @@ read directly and never expanded.
 
 Bug reports and focused patches are welcome. Please read
 [CONTRIBUTING.md](CONTRIBUTING.md), especially the rules against uploading
-game files or extracted native libraries.
+game files or extracted native libraries. The remaining controller blocker is
+tracked in [help-wanted issue #1](https://github.com/Detoy/nfsmw-r36s/issues/1).
